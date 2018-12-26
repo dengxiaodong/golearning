@@ -36,6 +36,13 @@ func NewSample() *User {
 }
 
 // Notify 通过邮件通知User
-func (user *User) Notify(message string) {
+func (user User) Notify(message string) {
+	fmt.Printf("Value receiver. adress:%p value:%v\n", &user, user)
 	fmt.Printf("send message %s to %s\n", message, user.email)
+}
+
+// ChangeEmail 改变User的的Email地址
+func (user *User) ChangeEmail(email string) {
+	fmt.Printf("Point receiver. adress:%p value:%v\n", user, &user)
+	user.email = email
 }
